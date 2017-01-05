@@ -6,18 +6,38 @@ var dummyData =
   [ 'N', 'M', 'E', 'E' ],
   [ 'R', 'P', 'Y', 'A' ] ];
 
-function objektify(data){
-  let hasil = []
-  for (let i = 0; i < data.length; i++){
-    for (let j = 0; j < data[i].length; j++){
-      let ini = {}
-      ini["huruf"] = data[i][j]
-      ini["posisi"] = [i, j]
-      hasil.push(ini)
-    }
+class Boggled{
+  constructor(){
+    this.hasil = []
   }
-  return hasil
-}
+  objektify(data){
+    let hasil = []
+    for (let i = 0; i < data.length; i++){
+      for (let j = 0; j < data[i].length; j++){
+        let ini = {}
+        ini["huruf"] = data[i][j]
+        ini["posisi"] = [i, j]
+        this.hasil.push(ini)
+      }
+    }
+    return this.hasil
+  }
 
+  searchIndex(text) {
+    for (let i = 0; i < text.length; i++){
+      for (let j = 0; j < this.hasil.length; j++){
+        if (this.hasil[j].huruf == text[i]){
+        return this.hasil[j]
+        }
+      }
+    }
+    return 1
+  }
+  //endofclass
+}
 //"MESS"
-console.log(objektify(dummyData));
+var bog = new Boggled()
+
+bog.objektify(dummyData);
+console.log(bog.searchIndex("MESS"));
+// console.log(bog.hasil[0].huruf);
