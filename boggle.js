@@ -6,8 +6,18 @@ var dummyData =
   [ 'N', 'M', 'E', 'E' ],
   [ 'R', 'P', 'Y', 'A' ] ];
 
-function cekBoogle(data){
-  return data
+function objektify(data){
+  let hasil = []
+  for (let i = 0; i < data.length; i++){
+    for (let j = 0; j < data[i].length; j++){
+      let ini = {}
+      ini["huruf"] = data[i][j]
+      ini["posisi"] = [i, j]
+      hasil.push(ini)
+    }
+  }
+  return hasil
 }
 
-console.log(cekBoogle("MESS"));
+//"MESS"
+console.log(objektify(dummyData));
