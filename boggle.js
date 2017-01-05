@@ -6,16 +6,32 @@ var dummyData =
   [ 'N', 'M', 'E', 'E' ],
   [ 'R', 'P', 'Y', 'A' ] ];
 
-class Boggled{
-  constructor(){
-    this.hasil = []
+function goRound(){
+  var goRound = []
+  const go = [-1, 0, 1]
+  for (let i = 0; i < 3; i++){
+    for (let j = 0; j < 3; j++){
+      goRound.push([go[i], go[j]]);
+    }
   }
-  objektify(data){
+  return goRound
+}
+
+class Boggled{
+  constructor(kataCari, data){
+    this.kataCari = kataCari;
+    this.data = data;
+    this.hasil = []
+    this.start = ""
+    this.point = 1
+    this.goRound = goRound()
+  }
+  objektify(){
     let hasil = []
-    for (let i = 0; i < data.length; i++){
-      for (let j = 0; j < data[i].length; j++){
+    for (let i = 0; i < this.data.length; i++){
+      for (let j = 0; j < this.data[i].length; j++){
         let ini = {}
-        ini["huruf"] = data[i][j]
+        ini["huruf"] = this.data[i][j]
         ini["posisi"] = [i, j]
         this.hasil.push(ini)
       }
@@ -23,21 +39,26 @@ class Boggled{
     return this.hasil
   }
 
-  searchIndex(text) {
-    for (let i = 0; i < text.length; i++){
+  searchIndex() {
+    for (let i = 0; i < this.kataCari.length; i++){
       for (let j = 0; j < this.hasil.length; j++){
-        if (this.hasil[j].huruf == text[i]){
-        return this.hasil[j]
+        if (this.hasil[j].huruf == this.kataCari[i]){
+        return this.start = this.hasil[j]
         }
       }
     }
-    return 1
+    return "Not Found"
   }
+
+  searchNext() {
+
+  }
+
   //endofclass
 }
 //"MESS"
-var bog = new Boggled()
+var bog = new Boggled("MESS", dummyData)
 
-bog.objektify(dummyData);
-console.log(bog.searchIndex("MESS"));
-// console.log(bog.hasil[0].huruf);
+bog.objektify();
+bog.searchIndex();
+console.log(goRound());
