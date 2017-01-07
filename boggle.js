@@ -19,12 +19,13 @@ var dummyData =
 
 class Boggled{
   constructor(kataCari, data){
-    this.kataCari = kataCari;
+    this.kataCari = kataCari.toUpperCase();
     this.data = data;
     this.hasil = []
     this.start = ""
     this.point = 1
     this.finish = false
+    this.val = 0
   }
   objektify(){
     let hasil = []
@@ -51,9 +52,9 @@ class Boggled{
   }
 
   searchNext() {
-    let kiri = this.start.posisi[0] -1
-    let kanan = this.start.posisi[1] -1
-    for (let h = 0; h < 8; h++){
+    while (!this.finish && this.val < 8){
+      let kiri = this.start.posisi[0] -1
+      let kanan = this.start.posisi[1] -1
       for (let i = kiri; i < kiri +3; i++){
         for (let j = kanan; j < kanan +3; j++ ){
           if (this.start == [i,j] || i < 0 || j < 0 || i > 3 || j > 3){
@@ -61,28 +62,24 @@ class Boggled{
             this.start.posisi = [i,j]
             this.start.huruf = this.kataCari[this.point]
             this.point++
-            return this
           }
         }
       }
-    }
-    return "Not Found"
-  }
-
-  findWord() {
-    while (!this.finish){
-      this.searchNext()
+      this.val++
       if (this.point == this.kataCari.length){
         this.finish = true
+        return "Kata Ditemukan"
       }
     }
-    return "Kata Ditemukan"
+    return "Not Found 404"
   }
+
   //endofclass
 }
 //"MESS"
-var bog = new Boggled("JSI", dummyData)
+//"CSI"
+var bog = new Boggled("TjEEISJ", dummyData)
 
 bog.objektify();
 bog.searchIndex();
-console.log(bog.findWord());
+console.log(bog.searchNext());
