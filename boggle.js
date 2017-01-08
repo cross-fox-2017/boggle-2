@@ -1,6 +1,14 @@
 //Kata Apapun Yang Tidak Ada Dalam Gird Bisa di Cari
 // Untuk Melengkapi ini Gunakan Titik Tengah Dan Mengecek Ke Berbagai Arah, Jika ada maka titik mengah tersebut diganti dengan data pada arah yang ditemukan, hahaha :D Pusing gk tuhhh
 function boggle2(cari) {
+//Aktifkan ini untuk cek manual
+  // var gird = [
+  //     ['E', 'Z', 'R', 'K'],
+  //     ['H', 'A', 'W', 'T'],
+  //     ['V', 'B', 'X', 'Q'],
+  //     ['D', 'J', 'S', 'C']
+  // ]
+  // var tampungGrid = ['E', 'Z', 'R', 'K','H', 'A', 'W', 'T','V', 'B', 'X', 'Q','D', 'J', 'S', 'C']
 
     var gird = [];
     var tampungGrid = [];
