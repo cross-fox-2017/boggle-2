@@ -72,21 +72,7 @@ class BoggleBoard {
       }
     }
 
-    console.log(arr2.length)
     return console.log(arr2)
-  }
-
-  solve() {
-    let arr = []
-    for(let i = 0; i < y; i++){
-      for(let j = 0; j < x; j++){
-        arr.push(this.words.indexOf(this.boggleBoard))
-      }
-    }
-
-    // return console.log(this.words[0].length)
-    return console.log(this.boggleBoard)
-    
   }
 
   data() {
@@ -99,22 +85,24 @@ class BoggleBoard {
   }
 }
 
+// helper function
 function shuffle(array) {
-    let counter = array.length;
-    while (counter > 0) {
-        let index = Math.floor(Math.random() * counter);
-        counter--;
+  let counter = array.length;
+  while (counter > 0) {
+    let index = Math.floor(Math.random() * counter);
+    counter--;
 
-        let temp = array[counter];
-        array[counter] = array[index];
-        array[index] = temp;
-    }
-    return array;
+    let temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
+  }
+  return array;
 }
 
+
 let boggleBoard = new BoggleBoard();
+
 boggleBoard.shake();
 boggleBoard.print();
 boggleBoard.position()
 boggleBoard.solve()
-// boggleBoard.solve()
