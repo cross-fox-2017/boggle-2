@@ -36,6 +36,19 @@ class BoggleBoard {
     return arr
   }
 
+  checker(arr) {
+    if(arr[0].x === 0 && arr[0].y === 0){
+      if(arr[1].x === 1 || arr[1].y === 1){
+        return true
+      }
+    }
+    if(arr[0].x === 0 && arr[0].y === 1){
+      if(arr[1].x === 1 || arr[1].y === 1){
+        return true
+      }
+    }
+  }
+
   solve() {
     let arr = []
     for(let i = 0; i < this.words.length; i++){
@@ -72,11 +85,16 @@ class BoggleBoard {
       }
     }
 
-    return console.log(arr2)
+    let final = [];
+    for(let i = 0; i < arr.length; i++){
+      final.push(this.words[arr[i]]);
+    }
+
+    return console.log(final)
   }
 
   data() {
-    let words = ['ABCD','EFGH','IJKL','MNOP','QRST','UVWX','YZ',"ABA","ABAD","ABADI","ABAH","ABAI","ABAL","ABANG","ABANGAN","ABDI","ABDIKASI","ABDOMEN","ABDOMINAL","DEKODE","DEKODER","DEKOLONISASI","DEKOMPOSER","DEKOMPOSISI","DEKOMPRESI","DEKONGESTAN","HIEROGLIF","HIFA","HIGIENE","HIGIENIS","HIGROGRAF","HIGROGRAM","HIGROMETER","HIGROMETRI","HIGROSKOP","KRONIS","KRONISME","KRONOBIOLOGI","KRONOGRAM","KRONOLOGI","KRONOLOGIS","SEREALIA","SEREALIN","SEREAT","SEREBRAL","SEREBROSPINAL","SEREBRUM","SEREGANG","SEREH"];
+    let words = ['ABCD','EFGH','IJKL','MNOP','QRST','UVWX','YZ'];
     return words
   }
 
