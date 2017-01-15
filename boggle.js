@@ -36,19 +36,6 @@ class BoggleBoard {
     return arr
   }
 
-  checker(arr) {
-    if(arr[0].x === 0 && arr[0].y === 0){
-      if(arr[1].x === 1 || arr[1].y === 1){
-        return true
-      }
-    }
-    if(arr[0].x === 0 && arr[0].y === 1){
-      if(arr[1].x === 1 || arr[1].y === 1){
-        return true
-      }
-    }
-  }
-
   solve() {
     let arr = []
     for(let i = 0; i < this.words.length; i++){
@@ -80,7 +67,7 @@ class BoggleBoard {
                 i: arr[i]
               })
             }
-          }
+          } 
         }
       }
     }
